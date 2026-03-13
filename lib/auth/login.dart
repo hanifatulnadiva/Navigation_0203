@@ -48,11 +48,21 @@ class _LoginPageState extends State<LoginPage> {
                               color: MainLayout.primaryColor,
                             ),
                           ),
-                        ),
+                        );
                       },
                     ),
-            
-                    
+                    const SizedBox(height: 40,),
+
+                    const Text(
+                      'welcome back',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w800,
+                        color: MainLayout.textTitleColor,
+                        letterSpacing: -0.5,
+                      ),
+                    )
                   ],
                 ),
               ),
