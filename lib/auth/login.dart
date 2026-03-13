@@ -147,6 +147,63 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ) 
                       ),
+                    ),
+                    const SizedBox(height: 24,),
+                    ElevatedButton(
+                      onPressed: (){
+                        if(_formKey.currentState!.validate()){
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageLayout(builder:(context)=>
+                                const HomePage()),
+                            );
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: MainLayout.primaryColor,
+                        foregroundColor: Colors.white,
+                        elevation: 0,
+                        padding: const EdgeInsets.symmetric(vertical: 18),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16)
+                        ),
+
+                      ),
+                      child: const Text(
+                        'Login',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1.0
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Don\'t have an account?',
+                          style: TextStyle(
+                            color: MainLayout.textSubtitleColor,fontSize: 15
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context, 
+                              MaterialPageRoute(builder:(context)=>
+                              const RegisterPage()),
+                              );
+                          },
+                          child: const Text(
+                            'Sign Up',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600
+                            ),
+                          )
+                        )
+                      ],
                     )
                   ],
                 ),
