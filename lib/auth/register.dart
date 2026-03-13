@@ -72,8 +72,160 @@ class _RegisterPageState extends State<RegisterPage> {
                         letterSpacing: -0.5,
                       ),
                     ),
+                    const SizedBox(height: 8,),
+                    Text(
+                      'Sign up to get started',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: MainLayout.textSubtitleColor,
+                      ),
+                    ),
+                    const SizedBox(height: 48),
+
+                    TextFormField(
+                      controller: nameController,
+                      keyboardType: TextInputType.name,
+                      textInputAction: TextInputAction.next,
+                      decoration:InputDecoration(
+                        labelText: 'Full Name',
+                        labelStyle: const TextStyle(color: MainLayout.labelColor),
+                        prefixIcon: const Icon(Icons.person_outline, color: MainLayout.primaryColor,),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                          borderSide: const BorderSide(color: MainLayout.InputBorderColor)
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                          borderSide: const BorderSide(color: MainLayout.primaryColor, width:2)
+                        ),
+                        filled: true,
+                        fillColor: MainLayout.inputFillColor,
+                      ),
+                      validator: (value) {
+                        if(value == null || value.isEmpty) {
+                          return 'Please enter your full name';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 16,),
+                    TextFormField(
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                        labelText: 'Email Address',
+                        labelStyle: const TextStyle(color: MainLayout.labelColor),
+                        prefixIcon: const Icon(Icons.email_outlined, color: MainLayout.primaryColor),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                          borderSide: const BorderSide(color: MainLayout.InputBorderColor),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                          borderSide: const BorderSide(color: MainLayout.primaryColor, width: 2),
+                        ),
+                        filled: true,
+                        fillColor: MainLayout.inputFillColor,
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your email';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: passwordController,
+                      obscureText: true,
+                      textInputAction: TextInputAction.done,
+                      decoration:InputDecoration(
+                        labelText: 'Password',
+                        labelStyle: const TextStyle(color: MainLayout.labelColor),
+                        prefixIcon: const Icon(Icons.lock_outlined, color: MainLayout.primaryColor),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                          borderSide: const BorderSide(color: MainLayout.InputBorderColor)
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                          borderSide: const BorderSide(color: MainLayout.primaryColor, width: 2)
+                        ),
+                        filled: true,
+                        fillColor: MainLayout.inputFillColor,
+                      ),
+                      validator: (value) {
+                        if(value == null || value.isEmpty) {
+                          return 'Please enter your password';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 32),
+                    ElevatedButton(
+                      onPressed: (){
+                        if (_formKey.currentState!.validate()) {
+                          // Process registration logic here
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Registration is successfull! please login.'),
+                              backgroundColor:Colors.green,
+                              duration:Duration(seconds: 2),
+                              ),
+                          );
+                          Navigator.pop(context);
+                        }
+                    }, style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 18),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16)
+                      ),
+                      backgroundColor: MainLayout.primaryColor,
+                      foregroundColor: Colors.white,
+                      elevation: 0,
+                    ),
+                    child: const Text(
+                      'Sign Up',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.0,
+                      ),
+                    )),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Already have an account?',
+                          style: TextStyle(
+                            color: MainLayout.textSubtitleColor,
+                            fontSize: 15,
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context)=>
+                              const LoginPage()),
+                            );
+                          },
+                          child: const Text(
+                            ' Login',
+                            style: TextStyle(
+                              color: MainLayout.accentColor,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ],
-                ),
+                )
               ),
             ),
           ),
