@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navigation_0203/main%20layout.dart';
+import 'package:navigation_0203/auth/register.dart';
+import 'package:navigation_0203/home/home.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -154,7 +156,7 @@ class _LoginPageState extends State<LoginPage> {
                         if(_formKey.currentState!.validate()){
                             Navigator.pushReplacement(
                               context,
-                              MaterialPageLayout(builder:(context)=>
+                              MaterialPageRoute(builder:(context)=>
                                 const HomePage()),
                             );
                         }
@@ -199,7 +201,9 @@ class _LoginPageState extends State<LoginPage> {
                           child: const Text(
                             'Sign Up',
                             style: TextStyle(
-                              fontWeight: FontWeight.w600
+                              color: MainLayout.accentColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15
                             ),
                           )
                         )
